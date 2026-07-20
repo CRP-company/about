@@ -1,15 +1,22 @@
 <!DOCTYPE html>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Amir Atron</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bitcount+Single:wght@100..900&family=Herr+Von+Muellerhoff&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bitcount+Single:wght@100..900&family=Cutive+Mono&family=Herr+Von+Muellerhoff&display=swap"
+        rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
 </head>
 <style>
+    html {
+        scroll-behavior: smooth;
+    }
+
     body {
         background-color: #F3F3F3;
     }
@@ -19,13 +26,77 @@
         height: 100vh;
     }
 
-    #logo {
-        position: fixed;
-        left: 10px;
-        top: 10px;
-        width: 70px;
-        height: auto;
-        z-index: 3;
+
+    @media (max-width: 600px) {
+
+        #image1 {
+            width: 230px;
+            border-radius: 60px;
+            left: 70%;
+        }
+
+        #horizantal_line1 {
+            left: 70%;
+        }
+
+        #image1.after {
+            width: 220px;
+        }
+
+        #image2 {
+            border-bottom-left-radius: 60px;
+            border-bottom-right-radius: 60px;
+            margin-left: 30px;
+            margin-right: 30px;
+            width: calc(100% - 60px);
+        }
+
+        #content2 {
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+
+        #image3 {
+            margin-left: 30px;
+            margin-right: 30px;
+            width: calc(100% - 60px);
+        }
+
+        #top-text {
+            font-size: 60px;
+            top: 40%;
+        }
+
+        #name {
+            font-size: 0px;
+        }
+
+        #content-text {
+            font-size: 30px;
+        }
+
+        #content2-text {
+            font-size: 30px;
+        }
+
+        #CRP_focus_text {
+            font-size: 30px;
+        }
+
+        #examples_text {
+            font-size: 70px;
+        }
+
+        #content5 {
+            margin-left: 15px;
+            margin-right: 15px;
+        }
+
+        #image4 {
+            margin-left: 15px;
+            margin-right: 15px;
+            width: calc(100% - 30px);
+        }
     }
 
     #horizantal_line1 {
@@ -34,12 +105,12 @@
     }
 
     #Vertical_line1 {
-        top: 60%;
+        top: 20%;
     }
 
     #horizantal_line2 {
         left: 20%;
-        height: 2100px;
+        height: 4000px;
     }
 
     #Vertical_line2 {
@@ -69,17 +140,9 @@
 
     #top-text {
         position: absolute;
-        left: 25%;
-        top: 10%;
-        font-family: 'Bitcount Single', sans-serif;
-        font-size: 100px;
-        font-weight: 400;
-    }
-
-    #buttom-text {
-        position: absolute;
-        left: 25%;
-        top: 20%;
+        right: 20%;
+        left: 5%;
+        top: 55%;
         font-family: 'Bitcount Single', sans-serif;
         font-size: 100px;
         font-weight: 400;
@@ -88,24 +151,29 @@
     #image1 {
         position: absolute;
         left: 80%;
-        top: 60%;
+        top: 20%;
         width: 150px;
         transform: translate(-50%, -50%);
         border-radius: 30px;
         transition: all 0.2s;
     }
 
-    #image1.after {
-        width: 170px
-    }
-
     #name {
         position: absolute;
         left: 50px;
-        top: calc(60% + 10px);
+        top: calc(20% + 10px);
         font-family: 'Herr Von Muellerhoff', cursive;
         font-size: 40px;
         font-weight: 300;
+        color: #FFFFFF;
+        mix-blend-mode: difference;
+    }
+
+    #name.fixed-name {
+        position: fixed;
+        left: 50px;
+        top: 0px;
+        z-index: 4;
     }
 
 
@@ -175,36 +243,54 @@
 
     #content3 {
         position: relative;
-        height: 1000px;
-    }
-
-    /***Carousel***/
-    .carousel {
-        overflow: hidden;
-        position: absolute;
-        top: 560px;
-        left: 0;
-        width: 100%;
-    }
-
-    .track {
         display: flex;
-        width: max-content;
-        animation: scroll 20s linear infinite;
+        flex-direction: column;
+        align-items: center;
     }
 
-    .track img {
-        width: 700px;
-        margin-right: 20px;
-        border-radius: 30px;
+    /***examples***/
+    .project {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 80px;
+        z-index: 2;
+        width: 90%;
+        margin: 120px auto;
     }
 
-    @keyframes scroll {
-        from {
-            transform: translateX(0);
+    .project.reverse {
+        flex-direction: row-reverse;
+    }
+
+    .project img {
+        width: 55%;
+        border-radius: 40px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, .15);
+    }
+
+    .project p {
+        width: 35%;
+        font-family: 'Bitcount Single', sans-serif;
+        font-size: 28px;
+        background-color: #F3F3F3;
+    }
+
+
+    @media (max-width:700px) {
+
+        .project,
+        .project.reverse {
+            flex-direction: column;
+            text-align: center;
         }
-        to {
-            transform: translateX(-50%);
+
+        .project img {
+            width: 100%;
+        }
+
+        .project p {
+            width: 100%;
         }
     }
 
@@ -228,10 +314,13 @@
         gap: 80px;
     }
 
+    #content4 span {
+        color: rgb(30, 150, 64);
+    }
+
     #CRP_focus_text {
         flex: 1;
         max-width: 500px;
-
         color: black;
         font-family: 'Bitcount Single', sans-serif;
         font-size: 30px;
@@ -308,11 +397,9 @@
         margin: 0;
     }
 
-    #contact_button {
-        position: absolute;
-        top: 100px;
-        left: 50%;
-        transform: translateX(-50%);
+    .button {
+        position: static;
+        margin-top: 80px;
         width: 300px;
         height: 80px;
         background-color: #00000000;
@@ -328,7 +415,7 @@
     }
 
 
-    #content2-text {
+    .button_text {
         position: static;
         margin: 0;
         margin-left: 10px;
@@ -336,6 +423,51 @@
         font-family: 'Bitcount Single', sans-serif;
         font-size: 30px;
         transition: all 0.3s ease-in-out;
+    }
+
+    .button_dark {
+        position: static;
+        margin-top: 0px;
+        width: 300px;
+        height: 80px;
+        background-color: #00000000;
+        border-radius: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        text-decoration: none;
+        cursor: pointer;
+        color: #F3F3F3;
+        transition: all 0.3s ease-in-out;
+    }
+
+
+    .button_text_dark {
+        position: static;
+        margin: 0;
+        margin-left: 10px;
+        color: #F3F3F3;
+        font-family: 'Bitcount Single', sans-serif;
+        font-size: 30px;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .button_dark .material-symbols-rounded {
+        color: #F3F3F3;
+    }
+
+    .button_dark:hover {
+        background-color: #F3F3F3;
+    }
+
+    .button_dark:hover .button_text_dark {
+        color: #000000;
+    }
+
+    .button_dark:hover .material-symbols-rounded {
+        transform: rotate(135deg);
+        color: #000000;
     }
 
     .material-symbols-rounded {
@@ -346,18 +478,29 @@
         color: #000000;
     }
 
-    #contact_button:hover .material-symbols-rounded {
+    .button:hover .material-symbols-rounded {
         transform: rotate(135deg);
         color: #EFEFEF;
     }
 
-    #contact_button:hover #content2-text {
+    .button:hover .button_text {
         color: #EFEFEF;
     }
 
-    #contact_button:hover {
+    .button:hover {
         background-color: #000000;
     }
+
+
+
+
+
+
+
+
+
+
+
 
     .material-symbols-outlined {
         position: static;
@@ -427,126 +570,173 @@
         transition: all 0.3s ease;
     }
 
-    @media (max-width: 600px) {
 
-        #image1 {
-            width: 230px;
-            border-radius: 60px;
-            left: 70%;
-        }
+    .stats_card {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
 
-        #horizantal_line1 {
-            left: 70%;
-        }
-
-        #image1.after {
-            width: 220px;
-        }
-
-        #image2 {
-            border-bottom-left-radius: 60px;
-            border-bottom-right-radius: 60px;
-            margin-left: 30px;
-            margin-right: 30px;
-            width: calc(100% - 60px);
-        }
-
-        #content2 {
-            margin-left: 30px;
-            margin-right: 30px;
-        }
-
-        #image3 {
-            margin-left: 30px;
-            margin-right: 30px;
-            width: calc(100% - 60px);
-        }
-
-        #top-text,
-        #buttom-text {
-            font-size: 100px;
-            left: 10%;
-        }
-
-        #name {
-            font-size: 40px;
-            top: 80%;
-            left: 40%;
-        }
-
-        #content-text {
-            font-size: 30px;
-        }
-
-        #content2-text {
-            font-size: 30px;
-        }
-
-        #CRP_focus_text {
-            font-size: 30px;
-        }
-
-        #examples_text {
-            font-size: 70px;
-        }
-
-        #content5 {
-            margin-left: 15px;
-            margin-right: 15px;
-        }
-
-        #image4 {
-            margin-left: 15px;
-            margin-right: 15px;
-            width: calc(100% - 30px);
-        }
+        margin: 120px 0;
+        padding: 0 10%;
+        box-sizing: border-box;
     }
 
+    .stat {
+        flex: 1;
+        text-align: center;
+    }
+
+    .stat h1 {
+        margin: 0;
+        font-family: "Bitcount Single", sans-serif;
+        font-size: 40px;
+        font-weight: 400;
+    }
+
+    .stat h2 {
+        margin-top: 10px;
+        font-family: "Cutive Mono", monospace;
+        font-size: 24px;
+        font-weight: 400;
+    }
+
+    @media (max-width:700px) {
+
+        .stats_card {
+            flex-direction: column;
+            gap: 60px;
+        }
+
+    }
+
+    .what_i_build {
+        width: 90%;
+        margin: 120px auto;
+
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 40px;
+    }
+
+    .what_i_build h1 {
+        width: 100%;
+        text-align: center;
+        font-family: "Bitcount Single", sans-serif;
+        font-size: 50px;
+        font-weight: 400;
+        color: #000000;
+    }
+
+
+    .card {
+        width: 300px;
+        position: relative;
+        overflow: hidden;
+        border-radius: 30px;
+
+    }
+
+    .card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 30px;
+        display: block;
+    }
+
+
+    .card h2 {
+        margin-top: 15px;
+        text-align: center;
+        color: black;
+        width: 100px;
+        font-family: "Bitcount Single", sans-serif;
+        font-size: 28px;
+        font-weight: 400;
+    }
 </style>
+
 <body>
     <div id="hero">
-        <img id="logo" src="assets/CRP logo.png">
         <h2 id="name">Amir Atron</h2>
         <hr class="horizantal_line" id="horizantal_line1">
         <hr class="Vertical_line" id="Vertical_line1">
         <img id="image1" src="assets/image1.jpg">
-        <h1 id="top-text">About</h1>
-        <h1 id="buttom-text">me</h1>
+        <h1 id="top-text">Websites that make businesses stand out.</h1>
     </div>
 
     <img src="assets/image2.jpg" id="image2">
 
     <div id="content2">
-        <p id="content-text">I develop and design digital solutions for businesses that want to present themselves more professionally in the digital world.</p>
+        <p id="content-text">I develop and design digital solutions for businesses that want to present themselves more
+            professionally in the digital world.</p>
     </div>
 
     <img src="assets/image3.jpg" id="image3">
 
     <div id="content3">
         <hr class="horizantal_line" id="horizantal_line2">
-        <a id="contact_button" href="https://mail.google.com/mail/?view=cm&fs=1&to=atronamir5@gmail.com&su=Website%20Contact&body=Hello%20Amir,"target="_blank">
-            <p id="content2-text">contact me</p>
+        <a class="button" href="#content5">
+            <p class="button_text">contact me</p>
             <span class="material-symbols-rounded">
                 arrow_back
             </span>
         </a>
         <hr class="Vertical_line" id="Vertical_line2">
-        <div class="carousel">
-            <div class="track">
-                <img src="assets/site_example1.png">
-                <img src="assets/site_example2.png">
-                <img src="assets/site_example3.png">
 
-                <img src="assets/site_example1.png">
-                <img src="assets/site_example2.png">
-                <img src="assets/site_example3.png">
+        <div class="stats_card">
+            <div class="stat">
+                <h1>1</h1>
+                <h2>Published App</h2>
+            </div>
+            <div class="stat">
+                <h1>8+</h1>
+                <h2>Personal Projects</h2>
+            </div>
+            <div class="stat">
+                <h1>100%</h1>
+                <h2>Custom Built</h2>
             </div>
         </div>
-        <p id="examples_text">examples</p>
+
+        <div class="what_i_build">
+            <h1>What i build</h1>
+            <div class="card">
+                <img src="assets/image5.png">
+                <h2>Business Websites</h2>
+            </div>
+            <div class="card">
+                <img src="assets/image6.png">
+                <h2>Landing Pages</h2>
+            </div>
+            <div class="card">
+                <img src="assets/image7.png">
+                <h2>UI/UX</h2>
+            </div>
+        </div>
+        <div class="project">
+            <img src="assets/site_example1.png">
+            <p>Early access system</p>
+        </div>
+
+        <div class="project reverse">
+            <img src="assets/site_example2.png">
+            <p>CRP Focus app Landing Page</p>
+        </div>
+
+        <div class="project">
+            <img src="assets/site_example3.png">
+            <p>CUBY devices store</p>
+        </div>
     </div>
-    
+
     <div id="content4">
-        <p id="CRP_focus_text">Beyond working with clients, I also develop independent products, including CRP Focus, an app developed and launched on Google Play.</p>
+        <p id="CRP_focus_text">CRP Focus Android App</p>
+        <span class="material-symbols-outlined">
+            android
+        </span>
         <div class="images">
             <img src="assets/CRP_focus2.png" id="CRP_focus2">
         </div>
@@ -556,73 +746,81 @@
     <div id="content5">
         <p id="more_text">more</p>
         <div class="more">
-            <div class="more_buttons">
-                <span class="material-symbols-outlined">
-                    download
+            <a class="button_dark"
+                href="https://mail.google.com/mail/?view=cm&fs=1&to=atronamir5@gmail.com&su=Website%20Contact&body=Hello%20Amir,"
+                target="_blank">
+                <p class="button_text_dark">Email</p>
+                <span class="material-symbols-rounded">
+                    arrow_back
                 </span>
-                <a class="more_subtext" href="https://play.google.com/store/apps/details?id=com.crp.focus&hl=en_US">CRP focus</a>
-            </div>
-            <div class="more_buttons">
-                <span class="material-symbols-outlined">
-                    policy
+            </a>
+            <a class="button_dark" href="https://wa.me/972522221735?text=Hello%20Amir," target="_blank">
+                <p class="button_text_dark">Whatsapp</p>
+                <span class="material-symbols-rounded">
+                    arrow_back
                 </span>
-                <a class="more_subtext" href="https://crp-company.github.io/CRP-Privacy-policy/">Privacy policy</a>
-            </div>
+            </a>
         </div>
     </div>
 </body>
 
 <script>
-const image = document.getElementById("image2");
-const content2 = document.getElementById("content2");
-const image3 = document.getElementById("image3");
-const image1 = document.getElementById("image1");
-const image4 = document.getElementById("image4");
-const content5 = document.getElementById("content5");
+    const image = document.getElementById("image2");
+    const content2 = document.getElementById("content2");
+    const image3 = document.getElementById("image3");
+    const image1 = document.getElementById("image1");
+    const image4 = document.getElementById("image4");
+    const content5 = document.getElementById("content5");
+    const nameElement = document.getElementById("name");
+
+    let nameInitialTop = nameElement.offsetTop;
+
+    window.addEventListener("resize", () => {
+        const isFixed = nameElement.classList.contains("fixed-name");
+        if (isFixed) nameElement.classList.remove("fixed-name");
+        nameInitialTop = nameElement.offsetTop;
+        if (isFixed) nameElement.classList.add("fixed-name");
+    });
+
+    window.addEventListener("scroll", () => {
+        if (window.scrollY >= nameInitialTop - 10) {
+            nameElement.classList.add("fixed-name");
+        } else {
+            nameElement.classList.remove("fixed-name");
+        }
+    });
 
 
-window.addEventListener("scroll", () => {
-    const imagePosition = image.getBoundingClientRect();
+    window.addEventListener("scroll", () => {
+        const imagePosition = image.getBoundingClientRect();
 
-    if (imagePosition.top < window.innerHeight * 0.4) {
-        image.classList.add("expand");
-        content2.classList.add("expand");
-        image3.classList.add("expand");
-    }
+        if (imagePosition.top < window.innerHeight * 0.4) {
+            image.classList.add("expand");
+            content2.classList.add("expand");
+            image3.classList.add("expand");
+        }
 
-    if (imagePosition.top > window.innerHeight * 0.4) {
-        image.classList.remove("expand");
-        content2.classList.remove("expand");
-        image3.classList.remove("expand");
-    }
+        if (imagePosition.top > window.innerHeight * 0.4) {
+            image.classList.remove("expand");
+            content2.classList.remove("expand");
+            image3.classList.remove("expand");
+        }
 
-});
+    });
 
-let clicked = false;
+    window.addEventListener("scroll", () => {
+        const imagePosition = image4.getBoundingClientRect();
 
-window.addEventListener("click", () => {
-    if (!clicked) {
-        image1.classList.add("after");
-        clicked = true;
-    } else {
-        image1.classList.remove("after");
-        clicked = false;
-    }
-});
+        if (imagePosition.top < window.innerHeight * 0.6) {
+            image4.classList.add("expand");
+            content5.classList.add("expand");
+        }
 
-window.addEventListener("scroll", () => {
-    const imagePosition = image4.getBoundingClientRect();
+        if (imagePosition.top > window.innerHeight * 0.4) {
+            image4.classList.remove("expand");
+            content5.classList.remove("expand");
+        }
 
-    if (imagePosition.top < window.innerHeight * 0.6) {
-        image4.classList.add("expand");
-        content5.classList.add("expand");
-    }
-
-    if (imagePosition.top > window.innerHeight * 0.4) {
-        image4.classList.remove("expand");
-        content5.classList.remove("expand");
-    }
-
-});
+    });
 
 </script>
