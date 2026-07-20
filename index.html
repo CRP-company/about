@@ -198,11 +198,25 @@
         box-shadow: 0 20px 40px rgba(0, 0, 0, .15);
     }
 
-    .project p {
+    .project_info {
         width: 35%;
+        text-align: left;
+    }
+
+    .project p {
+        width: 100%;
         font-family: 'Bitcount Single', sans-serif;
         font-size: 28px;
         background-color: #F3F3F3;
+        margin: 0;
+    }
+
+    .project h2 {
+        font-family: "Cutive Mono", monospace;
+        font-size: 20px;
+        font-weight: 400;
+        margin: 0;
+        margin-top: 15px;
     }
 
 
@@ -218,20 +232,19 @@
             width: 100%;
         }
 
-        .project p {
+        .project_info {
             width: 100%;
+            text-align: center;
         }
     }
 
     #examples_text {
-        position: absolute;
-        top: 900px;
-        left: 50%;
-        transform: translateX(-50%);
-        color: black;
-        font-size: 50px;
-        z-index: 10;
+        width: 100%;
+        text-align: center;
         font-family: 'Herr Von Muellerhoff', cursive;
+        font-size: 50px;
+        font-weight: 400;
+        color: #000000;
     }
 
     #content4 {
@@ -243,16 +256,55 @@
         gap: 80px;
     }
 
-    #content4 span {
+    .app_info {
+        flex: 1;
+        max-width: 550px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .play_badge {
+        font-family: "Cutive Mono", monospace;
+        font-size: 24px;
+        color: #555555;
+        text-align: left;
+    }
+
+    .play_badge .material-symbols-rounded {
+        transform: none;
+        font-size: 24px;
         color: rgb(30, 150, 64);
     }
 
-    #CRP_focus_text {
-        flex: 1;
-        max-width: 500px;
-        color: black;
-        font-family: 'Bitcount Single', sans-serif;
+    .app_title {
+        font-family: "Bitcount Single", sans-serif;
+        font-size: 55px;
+        font-weight: 400;
+        margin: 15px 0;
+        color: #000000;
+    }
+
+    .app_desc {
+        font-family: "Cutive Mono", monospace;
+        font-size: 24px;
+        color: #555555;
+        margin: 0;
+        text-align: left;
+    }
+
+    .app_tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 30px;
+    }
+
+    .tag {
+        font-family: 'Herr Von Muellerhoff', cursive;
         font-size: 30px;
+        padding: 0px 16px;
+        color: #333333;
     }
 
     .images {
@@ -264,6 +316,12 @@
         width: 300px;
         border-radius: 30px;
         z-index: 2;
+        transition: all 0.5s ease;
+    }
+
+    #CRP_focus2:hover {
+        transform: translateY(-10px) rotate(2deg);
+        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
     }
 
     @media (max-width: 1200px) {
@@ -273,8 +331,17 @@
             text-align: center;
         }
 
-        #CRP_focus_text {
+        .app_info {
             max-width: 700px;
+            align-items: center;
+        }
+
+        .app_desc {
+            text-align: center;
+        }
+
+        .app_tags {
+            justify-content: center;
         }
 
         .images {
@@ -304,12 +371,24 @@
     }
 
     #content5 {
+        position: relative;
         background-color: #000000;
         margin-top: 0;
         margin-left: 60px;
         margin-right: 60px;
-        height: 450px;
+        height: 500px;
         transition: all 0.5s ease-in-out;
+    }
+
+    .site_footer {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-family: 'Herr Von Muellerhoff', cursive;
+        font-size: 32px;
+        color: #F3F3F3;
+        margin: 0;
     }
 
     #content5.expand {
@@ -420,21 +499,9 @@
         background-color: #000000;
     }
 
-
-
-
-
-
-
-
-
-
-
-
     .material-symbols-outlined {
         position: static;
         font-size: 40px;
-        color: #ffffff;
         font-family: 'Material Symbols Outlined';
     }
 
@@ -589,8 +656,8 @@
     @media (max-width: 600px) {
 
         #image1 {
-            width: 230px;
-            border-radius: 60px;
+            width: 180px;
+            border-radius: 30px;
             left: 70%;
         }
 
@@ -698,7 +765,7 @@
             </div>
             <div class="stat">
                 <h1>8+</h1>
-                <h2>Personal Projects</h2>
+                <h2>Completed Projects</h2>
             </div>
             <div class="stat">
                 <h1>100%</h1>
@@ -721,27 +788,46 @@
                 <h2>UI/UX</h2>
             </div>
         </div>
+        <h1 id="examples_text">Projects</h1>
         <div class="project">
             <img src="assets/site_example1.png">
-            <p>Early access system</p>
+            <div class="project_info">
+                <p>Early access system</p>
+                <h2>A custom system for managing early users and access.</h2>
+            </div>
         </div>
 
         <div class="project reverse">
             <img src="assets/site_example2.png">
-            <p>CRP Focus app Landing Page</p>
+            <div class="project_info">
+                <p>CRP Focus app Landing Page</p>
+                <h2>Marketing website designed for a published Android application.</h2>
+            </div>
         </div>
 
         <div class="project">
             <img src="assets/site_example3.png">
-            <p>CUBY devices store</p>
+            <div class="project_info">
+                <p>CUBY devices store</p>
+                <h2>E-commerce experience for a hardware product.</h2>
+            </div>
         </div>
     </div>
 
     <div id="content4">
-        <p id="CRP_focus_text">CRP Focus Android App</p>
-        <span class="material-symbols-outlined">
-            android
-        </span>
+        <div class="app_info">
+            <div class="play_badge">
+                <span class="material-symbols-rounded">android</span>
+            </div>
+            <h1 class="app_title">CRP Focus</h1>
+            <p class="app_desc">AI-powered Android application.</p>
+            <div class="app_tags">
+                <span class="tag">Designed</span>
+                <span class="tag">Developed</span>
+                <span class="tag">Published</span>
+                <span class="tag">Maintained</span>
+            </div>
+        </div>
         <div class="images">
             <img src="assets/CRP_focus2.png" id="CRP_focus2">
         </div>
@@ -749,7 +835,7 @@
 
     <img src="assets/image4.jpg" id="image4">
     <div id="content5">
-        <p id="more_text">more</p>
+        <p id="more_text">Contact me</p>
         <div class="more">
             <a class="button_dark"
                 href="https://mail.google.com/mail/?view=cm&fs=1&to=atronamir5@gmail.com&su=Website%20Contact&body=Hello%20Amir,"
@@ -766,6 +852,7 @@
                 </span>
             </a>
         </div>
+        <footer class="site_footer">© 2026 Amir Atron</footer>
     </div>
 </body>
 
