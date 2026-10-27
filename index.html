@@ -3,916 +3,493 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amir Atron</title>
+    <title>CRP</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Bitcount+Single:wght@100..900&family=Cutive+Mono&family=Herr+Von+Muellerhoff&display=swap"
-        rel="stylesheet">
+
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bitcount+Single:wght@100..900&family=IBM+Plex+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+
+    <!-- icons -->
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
 </head>
 <style>
-    html {
-        scroll-behavior: smooth;
-    }
-
     body {
-        background-color: #F3F3F3;
+        margin: 0;
     }
 
-    #hero {
+    .grid-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 0;
+        background-image:
+            repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.015) 0px, rgba(0, 0, 0, 0.015) 1px, transparent 1px, transparent 32px),
+            repeating-linear-gradient(90deg, rgba(0, 0, 0, 0.015) 0px, rgba(0, 0, 0, 0.015) 1px, transparent 1px, transparent 32px);
+    }
+
+    .section {
+        height: 100vh;
+    }
+
+    .section1 {
         position: relative;
+    }
+
+    .section1 h1 {
+        position: absolute;
+        bottom: 2rem;
+        left: 2rem;
+        margin: 0;
+        font-family: 'Bitcount Single', sans-serif;
+        font-weight: 400;
+        font-size: 6rem;
+        line-height: 1;
+    }
+
+    .section1 h2 {
+        position: absolute;
+        bottom: 3rem;
+        right: 2rem;
+        margin: 0;
+        font-family: 'IBM Plex Serif', sans-serif;
+        font-weight: 300;
+        font-size: 1.5rem;
+    }
+
+    .section1-img {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 2rem;
+    }
+
+    .section1 img {
+        height: 70vh;
+    }
+
+    .section.section2 {
         height: 100vh;
+        min-height: 600px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
     }
 
-
-
-    #horizantal_line1 {
-        left: 80%;
-        height: 100vh;
+    .prespective {
+        position: relative;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
-    #Vertical_line1 {
-        top: 20%;
+    .prespective-orbit-stage {
+        --orbit-rx: clamp(280px, 35vw, 480px);
+        --orbit-ry: clamp(160px, 20vh, 230px);
+        --image-size: clamp(75px, 9vw, 120px);
+        position: relative;
+        width: 100%;
+        max-width: 1200px;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
-    #horizantal_line2 {
-        left: 20%;
-        height: 4000px;
-    }
-
-    #Vertical_line2 {
+    .orbit-ring {
+        position: absolute;
         top: 50%;
-        height: 1500px;
+        left: 50%;
+        width: calc(var(--orbit-rx) * 2);
+        height: calc(var(--orbit-ry) * 2);
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+        pointer-events: none;
         z-index: 1;
     }
 
-    .horizantal_line {
-        position: absolute;
-        top: 0;
-        width: 0;
-        border: none;
-        border-left: 2px dotted black;
-        margin: 0;
-    }
-
-    .Vertical_line {
-        position: absolute;
-        left: 0;
-        height: 0;
-        width: 100vw;
-        border: none;
-        border-top: 2px dotted black;
-        margin: 0;
-    }
-
-    #top-text {
-        position: absolute;
-        right: 20%;
-        left: 5%;
-        top: 55%;
-        font-family: 'Bitcount Single', sans-serif;
-        font-size: 100px;
-        font-weight: 400;
-    }
-
-    #image1 {
-        position: absolute;
-        left: 80%;
-        top: 20%;
-        width: 150px;
-        transform: translate(-50%, -50%);
-        border-radius: 30px;
-        transition: all 0.2s;
-    }
-
-    #name {
-        position: absolute;
-        left: 50px;
-        top: calc(20% + 10px);
-        font-family: 'Herr Von Muellerhoff', cursive;
-        font-size: 40px;
-        font-weight: 300;
-        color: #FFFFFF;
-        mix-blend-mode: difference;
-    }
-
-    #name.fixed-name {
-        position: fixed;
-        left: 50px;
-        top: 0px;
-        z-index: 4;
-    }
-
-
-    #image2 {
-        display: block;
-        margin-left: 60px;
-        margin-right: 60px;
-        width: calc(100% - 120px);
-        height: auto;
-        transform: rotate(180deg);
-        border-bottom-left-radius: 30px;
-        border-bottom-right-radius: 30px;
-        box-shadow: 0px 1px 120px rgba(0, 0, 0, 0.301);
-        transition: all 0.7s ease-in-out;
-    }
-
-    #image2.expand {
-        margin-left: 0;
-        margin-right: 0;
-        width: 100%;
-    }
-
-    #content2 {
-        margin-top: -1px;
-        margin-left: 60px;
-        margin-right: 60px;
-        position: relative;
-        height: 500px;
-        background-color: #000000;
-        transition: all 0.7s ease-in-out;
-    }
-
-    #content2.expand {
-        margin-left: 0;
-        margin-right: 0;
-    }
-
-    #content-text {
+    .orbit-wheel {
         position: absolute;
         top: 50%;
         left: 50%;
-        transform: translate(-50%, -50%);
-        color: #FFFFFF;
-        font-family: 'Bitcount Single', sans-serif;
-        font-size: 30px;
-        text-align: center;
-    }
-
-    #image3 {
-        display: block;
-        margin-left: 60px;
-        margin-right: 60px;
-        margin-bottom: -1px;
-        width: calc(100% - 120px);
-        height: auto;
-        border-bottom-left-radius: 30px;
-        border-bottom-right-radius: 30px;
-        box-shadow: 0px 1px 120px rgba(0, 0, 0, 0.301);
-        transition: all 0.7s ease-in-out;
-    }
-
-    #image3.expand {
-        margin-left: 0;
-        margin-right: 0;
-        width: 100%;
-    }
-
-    #content3 {
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    /***examples***/
-    .project {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 80px;
+        width: 0;
+        height: 0;
+        pointer-events: none;
         z-index: 2;
-        width: 90%;
-        margin: 120px auto;
     }
 
-    .project.reverse {
-        flex-direction: row-reverse;
-    }
-
-    .project img {
-        width: 55%;
-        border-radius: 40px;
-        box-shadow: 0 20px 40px rgba(0, 0, 0, .15);
-    }
-
-    .project_info {
-        width: 35%;
-        text-align: left;
-    }
-
-    .project p {
-        width: 100%;
-        font-family: 'Bitcount Single', sans-serif;
-        font-size: 28px;
-        background-color: #F3F3F3;
-        margin: 0;
-    }
-
-    .project h2 {
-        font-family: "Cutive Mono", monospace;
-        font-size: 20px;
-        font-weight: 400;
-        margin: 0;
-        margin-top: 15px;
-    }
-
-
-    @media (max-width:700px) {
-
-        .project,
-        .project.reverse {
-            flex-direction: column;
-            text-align: center;
-        }
-
-        .project img {
-            width: 100%;
-        }
-
-        .project_info {
-            width: 100%;
-            text-align: center;
-        }
-    }
-
-    #examples_text {
-        width: 100%;
-        text-align: center;
-        font-family: 'Herr Von Muellerhoff', cursive;
-        font-size: 50px;
-        font-weight: 400;
-        color: #000000;
-    }
-
-    #content4 {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-
-        padding: 120px 10%;
-        gap: 80px;
-    }
-
-    .app_info {
-        flex: 1;
-        max-width: 550px;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .play_badge {
-        font-family: "Cutive Mono", monospace;
-        font-size: 24px;
-        color: #555555;
-        text-align: left;
-    }
-
-    .play_badge .material-symbols-rounded {
-        transform: none;
-        font-size: 24px;
-        color: rgb(30, 150, 64);
-    }
-
-    .app_title {
-        font-family: "Bitcount Single", sans-serif;
-        font-size: 55px;
-        font-weight: 400;
-        margin: 15px 0;
-        color: #000000;
-    }
-
-    .app_desc {
-        font-family: "Cutive Mono", monospace;
-        font-size: 24px;
-        color: #555555;
-        margin: 0;
-        text-align: left;
-    }
-
-    .app_tags {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 12px;
-        margin-top: 30px;
-    }
-
-    .tag {
-        font-family: 'Herr Von Muellerhoff', cursive;
-        font-size: 30px;
-        padding: 0px 16px;
-        color: #333333;
-    }
-
-    .images {
-        display: flex;
-        gap: 30px;
-    }
-
-    #CRP_focus2 {
-        width: 300px;
-        border-radius: 30px;
-        z-index: 2;
-        transition: all 0.5s ease;
-    }
-
-    #CRP_focus2:hover {
-        transform: translateY(-10px) rotate(2deg);
-        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
-    }
-
-    @media (max-width: 1200px) {
-
-        #content4 {
-            flex-direction: column;
-            text-align: center;
-        }
-
-        .app_info {
-            max-width: 700px;
-            align-items: center;
-        }
-
-        .app_desc {
-            text-align: center;
-        }
-
-        .app_tags {
-            justify-content: center;
-        }
-
-        .images {
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-    }
-
-    #image4 {
-        display: block;
-        margin-left: 60px;
-        margin-right: 60px;
-        margin-bottom: -1px;
-        width: calc(100% - 120px);
-        height: 500px;
-        transform: rotate(180deg);
-        border-bottom-left-radius: 60px;
-        border-bottom-right-radius: 60px;
-        box-shadow: 0px 1px 120px rgba(0, 0, 0, 0.301);
-        transition: all 0.5s ease-in-out;
-    }
-
-    #image4.expand {
-        margin-left: 0px;
-        margin-right: 0px;
-        width: calc(100%);
-    }
-
-    #content5 {
-        position: relative;
-        background-color: #000000;
-        margin-top: 0;
-        margin-left: 60px;
-        margin-right: 60px;
-        height: 500px;
-        transition: all 0.5s ease-in-out;
-    }
-
-    .site_footer {
+    .orbit-node {
         position: absolute;
-        bottom: 20px;
-        left: 50%;
-        transform: translateX(-50%);
-        font-family: 'Herr Von Muellerhoff', cursive;
-        font-size: 32px;
-        color: #F3F3F3;
-        margin: 0;
+        top: 0;
+        left: 0;
+        width: var(--image-size);
+        height: var(--image-size);
+        margin-top: calc(var(--image-size) * -0.5);
+        margin-left: calc(var(--image-size) * -0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        will-change: transform;
+        pointer-events: auto;
     }
 
-    #content5.expand {
-        margin-left: 0px;
-        margin-right: 0px;
+    .orbit-node-inner {
+        width: 80%;
+        height: 100%;
+        overflow: hidden;
+        background-color: #ffffff;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
-    #more_text {
+    .orbit-node-inner img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        filter: grayscale(100%) contrast(1.06);
+        pointer-events: none;
+        user-select: none;
+    }
+
+    .prespective-center {
         position: relative;
-        color: #F3F3F3;
-        font-family: 'Bitcount Single', sans-serif;
-        font-size: 80px;
+        z-index: 3;
         text-align: center;
-        margin: 0;
+        max-width: clamp(280px, 36vw, 440px);
+        padding: 0 1.5rem;
+        pointer-events: auto;
     }
 
-    .button {
-        position: static;
-        margin-top: 80px;
-        width: 300px;
-        height: 80px;
-        background-color: #00000000;
-        border-radius: 40px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 20px;
-        text-decoration: none;
-        cursor: pointer;
-        color: white;
-        transition: all 0.3s ease-in-out;
+    .prespective-eyebrow {
+        display: inline-block;
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: clamp(0.7rem, 0.9vw, 0.8rem);
+        font-weight: 500;
+        letter-spacing: 0.28em;
+        text-transform: uppercase;
+        color: #888888;
+        margin-bottom: clamp(0.75rem, 1.2vw, 1.2rem);
     }
 
-
-    .button_text {
-        position: static;
-        margin: 0;
-        margin-left: 10px;
-        color: #000000;
-        font-family: 'Bitcount Single', sans-serif;
-        font-size: 30px;
-        transition: all 0.3s ease-in-out;
+    .prespective-headline {
+        font-family: 'Bitcount Single', serif;
+        font-weight: 300;
+        font-size: clamp(1.4rem, 2.5vw, 2.4rem);
+        line-height: 1.18;
+        letter-spacing: -0.02em;
+        color: #111111;
+        margin: 0 0 clamp(0.85rem, 1.3vw, 1.35rem) 0;
     }
 
-    .button_dark {
-        position: static;
-        margin-top: 0px;
-        width: 300px;
-        height: 80px;
-        background-color: #00000000;
-        border-radius: 40px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 20px;
-        text-decoration: none;
-        cursor: pointer;
-        color: #F3F3F3;
-        transition: all 0.3s ease-in-out;
+    .prespective-copy p {
+        font-family: 'IBM Plex Serif', serif;
+        font-weight: 300;
+        font-size: clamp(0.85rem, 1.1vw, 1.05rem);
+        line-height: 1.65;
+        color: #555555;
+        margin: 0 0 0.85rem 0;
     }
 
-
-    .button_text_dark {
-        position: static;
-        margin: 0;
-        margin-left: 10px;
-        color: #F3F3F3;
-        font-family: 'Bitcount Single', sans-serif;
-        font-size: 30px;
-        transition: all 0.3s ease-in-out;
+    .prespective-copy p:last-child {
+        margin-bottom: 0;
     }
 
-    .button_dark .material-symbols-rounded {
-        color: #F3F3F3;
+    @media (max-width: 768px) {
+        .section.section2 {
+            height: 100vh;
+            min-height: 560px;
+        }
+
+        .prespective-orbit-stage {
+            --orbit-rx: clamp(160px, 42vw, 240px);
+            --orbit-ry: clamp(190px, 28vh, 260px);
+            --image-size: clamp(56px, 12vw, 80px);
+        }
+
+        .prespective-center {
+            max-width: clamp(220px, 55vw, 320px);
+            padding: 0 0.75rem;
+        }
     }
 
-    .button_dark:hover {
-        background-color: #F3F3F3;
+    @media (max-width: 480px) {
+        .section.section2 {
+            height: 100vh;
+            min-height: 520px;
+        }
+
+        .prespective-orbit-stage {
+            --orbit-rx: clamp(135px, 40vw, 175px);
+            --orbit-ry: clamp(170px, 25vh, 220px);
+            --image-size: clamp(48px, 12vw, 62px);
+        }
+
+        .prespective-center {
+            max-width: 220px;
+            padding: 0 0.5rem;
+        }
     }
 
-    .button_dark:hover .button_text_dark {
-        color: #000000;
+    @media (prefers-reduced-motion: reduce) {
+        .orbit-node {
+            transition: none !important;
+        }
     }
 
-    .button_dark:hover .material-symbols-rounded {
-        transform: rotate(135deg);
-        color: #000000;
-    }
-
-    .material-symbols-rounded {
-        position: static;
-        transform: rotate(180deg);
-        font-size: 40px;
-        transition: all 0.3s ease-in-out;
-        color: #000000;
-    }
-
-    .button:hover .material-symbols-rounded {
-        transform: rotate(135deg);
-        color: #EFEFEF;
-    }
-
-    .button:hover .button_text {
-        color: #EFEFEF;
-    }
-
-    .button:hover {
-        background-color: #000000;
-    }
-
-    .material-symbols-outlined {
-        position: static;
-        font-size: 40px;
-        font-family: 'Material Symbols Outlined';
-    }
-
-    .more_subtext {
-        color: #F3F3F3;
-        font-family: 'Bitcount Single', sans-serif;
-        font-size: 30px;
-    }
-
-    .more {
+    .products {
         display: flex;
         flex-direction: column;
+        justify-content: space-around;
         align-items: center;
-        gap: 20px;
-        margin-top: 100px;
-    }
-
-
-    .more_buttons {
-        width: 400px;
-        height: 70px;
-
-        border-radius: 35px;
-        border: none;
-
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 20px;
-
-        cursor: pointer;
-
-        transition: all 0.3s ease;
-    }
-
-
-    .more_buttons:hover {
-        background-color: #F3F3F3;
-    }
-
-
-    .more_buttons:hover .material-symbols-outlined,
-    .more_buttons:hover .more_subtext {
-        color: black;
-    }
-
-
-    .more_subtext {
-        margin: 0;
-        color: #F3F3F3;
-        font-family: 'Bitcount Single', sans-serif;
-        font-size: 30px;
-
-        transition: all 0.3s ease;
-    }
-
-
-    .material-symbols-outlined {
-        font-size: 40px;
-        color: #F3F3F3;
-
-        transition: all 0.3s ease;
-    }
-
-
-    .stats_card {
+        height: 100%;
         width: 100%;
+        
+    }
+
+    .product {
         display: flex;
         justify-content: space-between;
         align-items: center;
-
-        margin: 120px 0;
-        padding: 0 10%;
-        box-sizing: border-box;
+        width: 80%;
+        background-color: #f1f1f1;
+        height: 40vh;
+        padding: 2rem;
     }
 
-    .stat {
-        flex: 1;
-        text-align: center;
+    .product h3 {
+        font-family: 'Bitcount Single', sans-serif;
+        font-weight: 300;
+        font-size: 2rem;
     }
 
-    .stat h1 {
-        margin: 0;
-        font-family: "Bitcount Single", sans-serif;
-        font-size: 40px;
-        font-weight: 400;
+    .product p {
+        font-family: 'Space Grotesk', sans-serif;
+        font-weight: 300;
+        font-size: 1.5rem;
     }
 
-    .stat h2 {
-        margin-top: 10px;
-        font-family: "Cutive Mono", monospace;
-        font-size: 24px;
-        font-weight: 400;
+    .product1 {
+        align-self: flex-end;
+        border-top-left-radius: 25px;
+        border-bottom-left-radius: 25px;
     }
 
-    @media (max-width:700px) {
-
-        .stats_card {
-            flex-direction: column;
-            gap: 60px;
-        }
-
+    .product2 {
+        align-self: flex-start;
+        flex-direction: row-reverse;
+        border-top-right-radius: 25px;
+        border-bottom-right-radius: 25px;
     }
 
-    .what_i_build {
-        width: 90%;
-        margin: 120px auto;
-
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 40px;
+    .product1 img{
+        transform: rotate(90deg);
+        height: 50vh;
+        margin-left: 2rem;
     }
 
-    .what_i_build h1 {
-        width: 100%;
-        text-align: center;
-        font-family: "Bitcount Single", sans-serif;
-        font-size: 50px;
-        font-weight: 400;
-        color: #000000;
-    }
-
-
-    .card {
-        width: 300px;
-        position: relative;
-        overflow: hidden;
-        border-radius: 30px;
-
-    }
-
-    .card img {
-        width: 100%;
-        height: 200px;
-        object-fit: cover;
-        border-radius: 30px;
-        display: block;
-    }
-
-
-    .card h2 {
-        margin-top: 15px;
-        text-align: center;
-        color: black;
-        width: 100px;
-        font-family: "Bitcount Single", sans-serif;
-        font-size: 28px;
-        font-weight: 400;
-    }
-
-    @media (max-width: 600px) {
-
-        #image1 {
-            width: 180px;
-            border-radius: 30px;
-            left: 70%;
-        }
-
-        #horizantal_line1 {
-            left: 70%;
-        }
-
-        #image1.after {
-            width: 220px;
-        }
-
-        #image2 {
-            border-bottom-left-radius: 60px;
-            border-bottom-right-radius: 60px;
-            margin-left: 30px;
-            margin-right: 30px;
-            width: calc(100% - 60px);
-        }
-
-        #content2 {
-            margin-left: 30px;
-            margin-right: 30px;
-        }
-
-        #image3 {
-            margin-left: 30px;
-            margin-right: 30px;
-            width: calc(100% - 60px);
-        }
-
-        #top-text {
-            font-size: 50px;
-            top: 48%;
-        }
-
-        #name {
-            position: fixed;
-            left: 50px;
-            top: 0px;
-            font-size: 30px;
-            z-index: 4;
-        }
-
-        #content-text {
-            font-size: 30px;
-        }
-
-        #content2-text {
-            font-size: 30px;
-        }
-
-        #CRP_focus_text {
-            font-size: 30px;
-        }
-
-        #examples_text {
-            font-size: 70px;
-        }
-
-        #content5 {
-            margin-left: 15px;
-            margin-right: 15px;
-        }
-
-        #image4 {
-            margin-left: 15px;
-            margin-right: 15px;
-            width: calc(100% - 30px);
-        }
+    .product2 img{
+        height: 20vh;
+        margin-right: 2rem;
     }
 </style>
-
 <body>
-    <div id="hero">
-        <h2 id="name">Amir Atron</h2>
-        <hr class="horizantal_line" id="horizantal_line1">
-        <hr class="Vertical_line" id="Vertical_line1">
-        <img id="image1" src="assets/image1.jpg">
-        <h1 id="top-text">Websites that make businesses stand out.</h1>
+    <div class="grid-overlay" aria-hidden="true"></div>
+    <div class="section section1">
+        <div class="section1-img">
+            <img src="assets/header.png">
+        </div>
+        <h1>
+            CRP
+        </h1>
+        <h2>
+            Designed to disappear.
+        </h2>
     </div>
 
-    <img src="assets/image2.jpg" id="image2">
+    <div class="section section2">
+        <div class="prespective">
+            <div class="prespective-orbit-stage" id="orbitStage">
+                <!-- Subtle orbital guide line -->
+                <div class="orbit-ring" id="orbitRing" aria-hidden="true"></div>
 
-    <div id="content2">
-        <p id="content-text">I develop and design digital solutions for businesses that want to present themselves more
-            professionally in the digital world.</p>
-    </div>
+                <!-- Orbit wheel containing the 6 images separated by 60 degrees -->
+                <div class="orbit-wheel" id="orbitWheel" aria-hidden="true">
+                    <div class="orbit-node" style="--angle: 0deg;">
+                        <div class="orbit-node-inner">
+                            <img src="assets/Time.jpg" alt="Time - Mechanical precision" loading="lazy">
+                        </div>
+                    </div>
+                    <div class="orbit-node" style="--angle: 60deg;">
+                        <div class="orbit-node-inner">
+                            <img src="assets/clarity.jpg" alt="Clarity - Mountain peak emerging above clouds" loading="lazy">
+                        </div>
+                    </div>
+                    <div class="orbit-node" style="--angle: 120deg;">
+                        <div class="orbit-node-inner">
+                            <img src="assets/IntentionalDesign.jpg" alt="Intentional Design - Points of light on dark surface" loading="lazy">
+                        </div>
+                    </div>
+                    <div class="orbit-node" style="--angle: 180deg;">
+                        <div class="orbit-node-inner">
+                            <img src="assets/Precision.jpg" alt="Precision - Machined metal" loading="lazy">
+                        </div>
+                    </div>
+                    <div class="orbit-node" style="--angle: 240deg;">
+                        <div class="orbit-node-inner">
+                            <img src="assets/Simplicity.jpg" alt="Simplicity - Subtle ripples on dark water" loading="lazy">
+                        </div>
+                    </div>
+                    <div class="orbit-node" style="--angle: 300deg;">
+                        <div class="orbit-node-inner">
+                            <img src="assets/Focus.jpg" alt="Focus - Monolithic architectural space" loading="lazy">
+                        </div>
+                    </div>
+                </div>
 
-    <img src="assets/image3.jpg" id="image3">
-
-    <div id="content3">
-        <hr class="horizantal_line" id="horizantal_line2">
-        <a class="button" href="#content5">
-            <p class="button_text">contact me</p>
-            <span class="material-symbols-rounded">
-                arrow_back
-            </span>
-        </a>
-        <hr class="Vertical_line" id="Vertical_line2">
-
-        <div class="stats_card">
-            <div class="stat">
-                <h1>1</h1>
-                <h2>Published App</h2>
-            </div>
-            <div class="stat">
-                <h1>8+</h1>
-                <h2>Completed Projects</h2>
-            </div>
-            <div class="stat">
-                <h1>100%</h1>
-                <h2>Custom Built</h2>
-            </div>
-        </div>
-
-        <div class="what_i_build">
-            <h1>What i build</h1>
-            <div class="card">
-                <img src="assets/image5.png">
-                <h2>Business Websites</h2>
-            </div>
-            <div class="card">
-                <img src="assets/image6.png">
-                <h2>Landing Pages</h2>
-            </div>
-            <div class="card">
-                <img src="assets/image7.png">
-                <h2>UI/UX</h2>
-            </div>
-        </div>
-        <h1 id="examples_text">Projects</h1>
-        <div class="project">
-            <img src="assets/site_example1.png">
-            <div class="project_info">
-                <p>Early access system</p>
-                <h2>A custom system for managing early users and access.</h2>
-            </div>
-        </div>
-
-        <div class="project reverse">
-            <img src="assets/site_example2.png">
-            <div class="project_info">
-                <p>CRP Focus app Landing Page</p>
-                <h2>Marketing website designed for a published Android application.</h2>
-            </div>
-        </div>
-
-        <div class="project">
-            <img src="assets/site_example3.png">
-            <div class="project_info">
-                <p>CUBY devices store</p>
-                <h2>E-commerce experience for a hardware product.</h2>
+                <!-- Central stationary text -->
+                <div class="prespective-text prespective-center">
+                    <h2 class="prespective-headline">Technology should move life forward.</h2>
+                    <div class="prespective-copy">
+                        <p>We believe technology should give people more control over their time, their attention, and the way they live.</p>
+                        <p>We build tools that work quietly in the background, so people can focus on what matters in the foreground.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
-    <div id="content4">
-        <div class="app_info">
-            <div class="play_badge">
-                <span class="material-symbols-rounded">android</span>
+    <div class="section section3">
+        <div class="products">
+            <div class="product1 product">
+                <div class="product1-text">
+                    <h3>CRP focus</h3>
+                    <p>Able to take all the thousands of messages you receive and filter, aggregate, and find what you really need from them</p>
+                </div>
+                <div class="product1-img">
+                    <img src="assets/CRPfocus.png">
+                </div>
             </div>
-            <h1 class="app_title">CRP Focus</h1>
-            <p class="app_desc">AI-powered Android application.</p>
-            <div class="app_tags">
-                <span class="tag">Designed</span>
-                <span class="tag">Developed</span>
-                <span class="tag">Published</span>
-                <span class="tag">Maintained</span>
+            <div class="product2 product">
+                <div class="product2-text">
+                    <h3>CUBY</h3>
+                    <p>CUBY is a versatile solution that combines the best of both worlds, offering a seamless experience for users who demand flexibility and performance.</p>
+                </div>
+                <div class="product2-img">
+                    <img src="https://i.postimg.cc/Pf2scqp9/Adobe-Express-file.png">
+                </div>
             </div>
-        </div>
-        <div class="images">
-            <img src="assets/CRP_focus2.png" id="CRP_focus2">
         </div>
     </div>
 
-    <img src="assets/image4.jpg" id="image4">
-    <div id="content5">
-        <p id="more_text">Contact me</p>
-        <div class="more">
-            <a class="button_dark"
-                href="https://mail.google.com/mail/?view=cm&fs=1&to=atronamir5@gmail.com&su=Website%20Contact&body=Hello%20Amir,"
-                target="_blank">
-                <p class="button_text_dark">Email</p>
-                <span class="material-symbols-rounded">
-                    arrow_back
-                </span>
-            </a>
-            <a class="button_dark" href="https://wa.me/972522221735?text=Hello%20Amir," target="_blank">
-                <p class="button_text_dark">Whatsapp</p>
-                <span class="material-symbols-rounded">
-                    arrow_back
-                </span>
-            </a>
+    <div class="section section4">
+        <div class="how-we-build">
+            <h1>how we build</h1>
+            <p>
+                We build tools that feel less like a tool and more like a quiet, capable partner that anticipates your needs and adapts to your rhythm.
+            </p>
+            <p>
+                We care about your privacy.
+            </p>
+            <p>
+                We engneer our tools and product to keep your focus on your goals.
+            </p>
         </div>
-        <footer class="site_footer">© 2026 Amir Atron</footer>
     </div>
+
+    <div class="section section5">
+        <div class="complexity">
+            <p>to make you see simplicity, we deal with complexity</p>
+            <p>beyond the simple events recognition in our app for example, there are more than 7 layers of filters and ranking algorithms working together to provide you with the most relevant information</p>
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            const stage = document.getElementById('orbitStage');
+            const ring = document.getElementById('orbitRing') || document.querySelector('.orbit-ring');
+            const nodes = document.querySelectorAll('.orbit-node');
+            if (!stage || !ring || nodes.length === 0) return;
+
+            // Extract initial base angles from data / CSS or distribute evenly
+            const nodeItems = Array.from(nodes).map((node, i) => {
+                const angleStyle = node.style.getPropertyValue('--angle');
+                const baseAngle = angleStyle ? parseFloat(angleStyle) : (i * (360 / nodes.length));
+                return { el: node, baseAngle: baseAngle };
+            });
+
+            let rx = 380;
+            let ry = 200;
+
+            function updateRadii() {
+                const rect = ring.getBoundingClientRect();
+                if (rect.width > 0 && rect.height > 0) {
+                    rx = rect.width / 2;
+                    ry = rect.height / 2;
+                }
+            }
+
+            // Slow, direct scroll-locked speed factor (degrees per pixel scrolled)
+            // 0.07 deg/px: rotates ~60 degrees across an 850px scroll
+            const SCROLL_SPEED_FACTOR = 0.07;
+            const degToRad = Math.PI / 180;
+            const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+            function updateOrbit() {
+                if (prefersReducedMotion.matches) return;
+
+                const scrollY = window.pageYOffset || document.documentElement.scrollTop;
+                const currentAngle = scrollY * SCROLL_SPEED_FACTOR;
+
+                for (let i = 0; i < nodeItems.length; i++) {
+                    const item = nodeItems[i];
+                    const totalDeg = (item.baseAngle + currentAngle) % 360;
+                    const rad = totalDeg * degToRad;
+
+                    const x = rx * Math.cos(rad);
+                    const y = ry * Math.sin(rad);
+
+                    item.el.style.transform = `translate3d(${x.toFixed(2)}px, ${y.toFixed(2)}px, 0)`;
+
+                    // Dynamic layering: items on the lower half pass in front
+                    const z = Math.round((Math.sin(rad) + 1) * 5) + 1;
+                    item.el.style.zIndex = z;
+                }
+            }
+
+            let ticking = false;
+            function requestTick() {
+                if (!ticking) {
+                    requestAnimationFrame(() => {
+                        updateOrbit();
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            }
+
+            window.addEventListener('scroll', requestTick, { passive: true });
+            window.addEventListener('resize', () => {
+                updateRadii();
+                requestTick();
+            }, { passive: true });
+            window.addEventListener('load', () => {
+                updateRadii();
+                requestTick();
+            });
+
+            // Initial positioning
+            updateRadii();
+            updateOrbit();
+        })();
+    </script>
 </body>
-
-<script>
-    const image = document.getElementById("image2");
-    const content2 = document.getElementById("content2");
-    const image3 = document.getElementById("image3");
-    const image1 = document.getElementById("image1");
-    const image4 = document.getElementById("image4");
-    const content5 = document.getElementById("content5");
-    const nameElement = document.getElementById("name");
-
-    let nameInitialTop = nameElement.offsetTop;
-
-    window.addEventListener("resize", () => {
-        const isFixed = nameElement.classList.contains("fixed-name");
-        if (isFixed) nameElement.classList.remove("fixed-name");
-        nameInitialTop = nameElement.offsetTop;
-        if (isFixed) nameElement.classList.add("fixed-name");
-    });
-
-    window.addEventListener("scroll", () => {
-        if (window.scrollY >= nameInitialTop - 10) {
-            nameElement.classList.add("fixed-name");
-        } else {
-            nameElement.classList.remove("fixed-name");
-        }
-    });
-
-
-    window.addEventListener("scroll", () => {
-        const imagePosition = image.getBoundingClientRect();
-
-        if (imagePosition.top < window.innerHeight * 0.4) {
-            image.classList.add("expand");
-            content2.classList.add("expand");
-            image3.classList.add("expand");
-        }
-
-        if (imagePosition.top > window.innerHeight * 0.4) {
-            image.classList.remove("expand");
-            content2.classList.remove("expand");
-            image3.classList.remove("expand");
-        }
-
-    });
-
-    window.addEventListener("scroll", () => {
-        const imagePosition = image4.getBoundingClientRect();
-
-        if (imagePosition.top < window.innerHeight * 0.6) {
-            image4.classList.add("expand");
-            content5.classList.add("expand");
-        }
-
-        if (imagePosition.top > window.innerHeight * 0.4) {
-            image4.classList.remove("expand");
-            content5.classList.remove("expand");
-        }
-
-    });
-
-</script>
